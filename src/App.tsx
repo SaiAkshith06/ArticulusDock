@@ -1464,13 +1464,17 @@ chrome.runtime.onInstalled.addListener(function(details) {
         }
         // Ensure user document exists
         const userRef = doc(db, 'users', user.uid);
-        await setDoc(userRef, {
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          photoURL: user.photoURL,
-          createdAt: Timestamp.now()
-        }, { merge: true });
+        try {
+          await setDoc(userRef, {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            createdAt: Timestamp.now()
+          }, { merge: true });
+        } catch (error) {
+          handleFirestoreError(error, OperationType.WRITE, `users/${user.uid}`);
+        }
       } else {
         if (location.pathname === '/dashboard') {
           navigate('/');

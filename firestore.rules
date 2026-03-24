@@ -57,19 +57,15 @@ service cloud.firestore {
     }
 
     function isValidUser(data) {
-      return data.keys().hasAll(['uid', 'email', 'createdAt']) &&
-             data.uid is string && data.uid.size() > 0 &&
-             data.email is string && data.email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$") &&
+      return data.uid is string && data.uid.size() > 0 &&
+             data.email is string &&
              data.createdAt is timestamp;
     }
 
     function isValidArticle(data) {
       return data.userId is string && data.userId == request.auth.uid &&
              data.url is string && data.title is string &&
-             data.savedAt is timestamp && data.isRead is bool &&
-             (!('groupId' in data) || data.groupId == null || 
-              (exists(/databases/$(database)/documents/groups/$(data.groupId)) &&
-               get(/databases/$(database)/documents/groups/$(data.groupId)).data.userId == request.auth.uid));
+             data.savedAt is timestamp && data.isRead is bool;
     }
 
     function isValidGroup(data) {

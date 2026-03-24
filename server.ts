@@ -5,7 +5,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import admin from 'firebase-admin';
 import { getFirestore, Timestamp } from 'firebase-admin/firestore';
-import firebaseConfig from './firebase-applet-config.json';
 import { GoogleGenAI, Type } from "@google/genai";
 import rateLimit from 'express-rate-limit';
 import slowDown from 'express-slow-down';
@@ -21,11 +20,11 @@ const __dirname = path.dirname(__filename);
 // Initialize Firebase Admin for the server
 const adminApp = admin.apps.length === 0 
   ? admin.initializeApp({
-      projectId: firebaseConfig.projectId,
+      projectId: process.env.FIREBASE_PROJECT_ID,
     })
   : admin.app();
 
-const db = getFirestore(adminApp, firebaseConfig.firestoreDatabaseId || '(default)');
+const db = getFirestore(adminApp, process.env.FIREBASE_DATABASE_ID || '(default)');
 
 // Initialize Gemini AI
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
@@ -233,7 +232,7 @@ async function startServer() {
         }
       }
 
-      console.log(`Attempting to save article for user ${userId} to database ${firebaseConfig.firestoreDatabaseId || '(default)'}`);
+      console.log(`Attempting to save article for user ${userId} to database ${process.env.FIREBASE_DATABASE_ID || '(default)'}`);
       const docRef = await db.collection('articles').add({
         userId,
         url,
