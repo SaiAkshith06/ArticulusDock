@@ -1,0 +1,39 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#F8F9FA"/>
+  <rect x="0" y="0" width="300" height="1500" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <rect x="40" y="40" width="48" height="48" rx="16" fill="#0F172A"/>
+  <text x="64" y="74" fill="white" font-family="Anton, sans-serif" font-size="24" font-weight="normal" text-anchor="middle">A</text>
+  <text x="104" y="72" fill="#0F172A" font-family="Anton, sans-serif" font-size="24" font-weight="normal">ArticulusDock</text>
+  
+  <text x="40" y="160" fill="#64748B" font-family="Work Sans, sans-serif" font-size="10" font-weight="bold" letter-spacing="0.5em">COLLECTIONS</text>
+  <rect x="20" y="190" width="260" height="56" rx="16" fill="#E5C4A7"/>
+  <text x="40" y="225" fill="white" font-family="Work Sans, sans-serif" font-size="14" font-weight="600">All Articles</text>
+  
+  <rect x="20" y="256" width="260" height="56" rx="16" fill="transparent"/>
+  <text x="40" y="291" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14" font-weight="600">Research</text>
+  
+  <rect x="340" y="40" width="820" height="64" rx="24" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <text x="380" y="78" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14">Search your archive...</text>
+  
+  <!-- Row 1 -->
+  <rect x="340" y="140" width="390" height="480" rx="40" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <rect x="340" y="140" width="390" height="240" rx="40" fill="#E5C4A7" fill-opacity="0.1"/>
+  <text x="380" y="420" fill="#0F172A" font-family="Anton, sans-serif" font-size="28" font-weight="normal">The Future of Focus</text>
+  <text x="380" y="460" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14">How digital minimalism is changing the way we work...</text>
+  
+  <rect x="770" y="140" width="390" height="480" rx="40" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <rect x="770" y="140" width="390" height="240" rx="40" fill="#E5C4A7" fill-opacity="0.1"/>
+  <text x="810" y="420" fill="#0F172A" font-family="Anton, sans-serif" font-size="28" font-weight="normal">Design Systems</text>
+  <text x="810" y="460" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14">Building scalable interfaces for modern web apps...</text>
+
+  <!-- Row 2 -->
+  <rect x="340" y="660" width="390" height="480" rx="40" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <rect x="340" y="660" width="390" height="240" rx="40" fill="#E5C4A7" fill-opacity="0.1"/>
+  <text x="380" y="940" fill="#0F172A" font-family="Anton, sans-serif" font-size="28" font-weight="normal">Digital Wellbeing</text>
+  <text x="380" y="980" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14">Maintaining balance in an always-connected world...</text>
+  
+  <rect x="770" y="660" width="390" height="480" rx="40" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <rect x="770" y="660" width="390" height="240" rx="40" fill="#E5C4A7" fill-opacity="0.1"/>
+  <text x="810" y="940" fill="#0F172A" font-family="Anton, sans-serif" font-size="28" font-weight="normal">The AI Revolution</text>
+  <text x="810" y="980" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14">Exploring the impact of generative AI on creativity...</text>
+</svg>

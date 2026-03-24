@@ -1,0 +1,110 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Document ID: {userId}
+    // Fields:
+    //   - uid: string (required) - The user's unique ID
+    //   - email: string (required) - The user's email address
+    //   - displayName: string (optional) - The user's display name
+    //   - photoURL: string (optional) - The user's profile picture URL
+    //   - createdAt: timestamp (required) - When the user account was created
+    //
+    // Collection: articles
+    // Document ID: {articleId}
+    // Fields:
+    //   - userId: string (required) - The ID of the user who saved the article
+    //   - groupId: string (optional) - The ID of the group this article belongs to
+    //   - url: string (required) - The original URL of the article
+    //   - title: string (required) - The title of the article
+    //   - excerpt: string (optional) - A short summary or excerpt
+    //   - content: string (optional) - The full content (if extracted)
+    //   - savedAt: timestamp (required) - When the article was saved
+    //   - isRead: bool (required) - Whether the article has been read
+    //   - tags: list (optional) - User-defined tags
+    //
+    // Collection: groups
+    // Document ID: {groupId}
+    // Fields:
+    //   - userId: string (required) - The ID of the user who created the group
+    //   - name: string (required) - The name of the group
+    //   - description: string (optional) - A short description of the group
+    //   - createdAt: timestamp (required) - When the group was created
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        ((exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
+         (request.auth.token.email == "kolasaiakshith@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'createdAt']) &&
+             data.uid is string && data.uid.size() > 0 &&
+             data.email is string && data.email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$") &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidArticle(data) {
+      return data.userId is string && data.userId == request.auth.uid &&
+             data.url is string && data.title is string &&
+             data.savedAt is timestamp && data.isRead is bool &&
+             (!('groupId' in data) || data.groupId == null || 
+              (exists(/databases/$(database)/documents/groups/$(data.groupId)) &&
+               get(/databases/$(database)/documents/groups/$(data.groupId)).data.userId == request.auth.uid));
+    }
+
+    function isValidGroup(data) {
+      return data.userId is string && data.userId == request.auth.uid &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) && isValidUser(request.resource.data) && (!('role' in request.resource.data) || request.resource.data.role == 'user');
+      allow update: if isOwner(userId) && isValidUser(request.resource.data) && (request.resource.data.role == resource.data.role || isAdmin());
+    }
+
+    match /articles/{articleId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && isValidArticle(request.resource.data);
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid && isValidArticle(request.resource.data);
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    match /groups/{groupId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && isValidGroup(request.resource.data);
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid && isValidGroup(request.resource.data);
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // Default deny
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the Lumina platform.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique ID of the user." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "photoURL": { "type": "string", "format": "uri", "description": "The user's profile picture URL." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user account was created." }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Article": {
+      "title": "Article",
+      "description": "A saved article for later reading.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who saved the article." },
+        "groupId": { "type": "string", "description": "The ID of the group this article belongs to." },
+        "url": { "type": "string", "format": "uri", "description": "The original URL of the article." },
+        "title": { "type": "string", "description": "The title of the article." },
+        "excerpt": { "type": "string", "description": "A short summary or excerpt." },
+        "content": { "type": "string", "description": "The full content (if extracted)." },
+        "thumbnail": { "type": "string", "format": "uri", "description": "The main thumbnail image URL of the article." },
+        "savedAt": { "type": "string", "format": "date-time", "description": "When the article was saved." },
+        "isRead": { "type": "boolean", "description": "Whether the article has been read." },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "User-defined tags." }
+      },
+      "required": ["userId", "url", "title", "savedAt", "isRead"]
+    },
+    "Group": {
+      "title": "Group",
+      "description": "A collection of articles organized by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who created the group." },
+        "name": { "type": "string", "description": "The name of the group." },
+        "description": { "type": "string", "description": "A short description of the group." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the group was created." }
+      },
+      "required": ["userId", "name", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents."
+    },
+    "/articles/{articleId}": {
+      "schema": "Article",
+      "description": "Collection of saved articles."
+    },
+    "/groups/{groupId}": {
+      "schema": "Group",
+      "description": "Collection of user-defined groups."
+    }
+  }
+}

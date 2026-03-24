@@ -1,0 +1,36 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#F8F9FA"/>
+  <rect x="200" y="100" width="800" height="1300" fill="white" rx="40" stroke="#0F172A" stroke-opacity="0.06"/>
+  
+  <text x="280" y="240" fill="#0F172A" font-family="Anton, sans-serif" font-size="64" font-weight="normal" letter-spacing="-0.02em">The Philosophy of Focus</text>
+  <text x="280" y="320" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14" font-weight="bold" letter-spacing="0.5em">ATLANTIC.COM / MARCH 21, 2026</text>
+  
+  <rect x="280" y="380" width="160" height="48" rx="16" fill="#E5C4A7"/>
+  <text x="360" y="410" fill="white" font-family="Work Sans, sans-serif" font-size="14" font-weight="600" text-anchor="middle">Original Source</text>
+  
+  <rect x="460" y="380" width="160" height="48" rx="16" fill="white" stroke="#0F172A" stroke-opacity="0.06"/>
+  <text x="540" y="410" fill="#64748B" font-family="Work Sans, sans-serif" font-size="14" font-weight="600" text-anchor="middle">Mark Read</text>
+  
+  <rect x="280" y="480" width="640" height="2" fill="#0F172A" fill-opacity="0.06"/>
+  
+  <text x="280" y="560" fill="#64748B" font-family="Georgia, serif" font-size="24" font-style="italic">Digital clutter is the enemy of deep reading. By removing distractions, we help you focus on the ideas and information that you saved for later.</text>
+  
+  <text x="280" y="680" fill="#0F172A" font-family="Georgia, serif" font-size="20">
+    <tspan x="280" dy="1.6em">In the age of information abundance, the most valuable skill is the ability to focus.</tspan>
+    <tspan x="280" dy="1.6em">ArticulusDock was built on the principle that your reading time should be sacred. When you</tspan>
+    <tspan x="280" dy="1.6em">save an article, you're making a commitment to your future self to engage with that</tspan>
+    <tspan x="280" dy="1.6em">content deeply. But the modern web is designed to pull you away from that commitment.</tspan>
+  </text>
+
+  <!-- Related Section -->
+  <rect x="280" y="1000" width="640" height="2" fill="#0F172A" fill-opacity="0.06"/>
+  <text x="280" y="1060" fill="#0F172A" font-family="Anton, sans-serif" font-size="24" font-weight="normal">Related from your Archive</text>
+  
+  <rect x="280" y="1100" width="300" height="200" rx="24" fill="#F8F9FA" stroke="#0F172A" stroke-opacity="0.06"/>
+  <text x="300" y="1240" fill="#0F172A" font-family="Anton, sans-serif" font-size="18" font-weight="normal">Digital Minimalism</text>
+  <text x="300" y="1270" fill="#64748B" font-family="Work Sans, sans-serif" font-size="12">Cal Newport / 12 min read</text>
+
+  <rect x="620" y="1100" width="300" height="200" rx="24" fill="#F8F9FA" stroke="#0F172A" stroke-opacity="0.06"/>
+  <text x="640" y="1240" fill="#0F172A" font-family="Anton, sans-serif" font-size="18" font-weight="normal">The Art of Stillness</text>
+  <text x="640" y="1270" fill="#64748B" font-family="Work Sans, sans-serif" font-size="12">Pico Iyer / 8 min read</text>
+</svg>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #FDFCFB;
+      color: #1A1A1A;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      background: #5A5A40;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #5A5A40;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: #4A4A30;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 12px;
+      font-size: 12px;
+      text-align: center;
+      color: #666;
+    }
+    .settings-link {
+      display: block;
+      margin-top: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #5A5A40;
+      text-decoration: none;
+    }
+    .settings-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div className="header">
+    <div className="logo">L</div>
+    <div className="title">Lumina</div>
+  </div>
+  <button id="saveBtn" className="btn">Save Article</button>
+  <div id="status" className="status"></div>
+  <a href="settings.html" className="settings-link">Extension Settings</a>
+  <script src="popup.js"></script>
+</body>
+</html>
